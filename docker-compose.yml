@@ -11,10 +11,17 @@ services:
       - ./app/:/usr/src/app/pwatest:cached
     networks:
       pwatest:
-        ipv4_address: 10.14.0.1
+        ipv4_address: 10.14.1.1
     ports:
       - "59908:3000"
       - "59909:5000"
     command: >
       sh -c "npm run build && npm i -g serve && serve -s build"
     tty: true
+networks:
+  pwatest:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.14.0.0/16
+          gateway: 10.14.0.1
