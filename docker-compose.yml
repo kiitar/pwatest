@@ -9,6 +9,9 @@ services:
       REACT_APP_API: "test"
     volumes:
       - ./app/:/usr/src/app/pwatest:cached
+    networks:
+      pwatest:
+        ipv4_address: 10.14.0.1
     ports:
       - "59908:3000"
       - "59909:5000"
