@@ -1,0 +1,17 @@
+version: "3"
+services:
+  pwatest:
+    image: node:12-alpine
+    container_name: pwatest
+    working_dir: /usr/src/app/pwatest
+    environment:
+      TZ: "Asia/Bangkok"
+      REACT_APP_API: "test"
+    volumes:
+      - ./app/:/usr/src/app/pwatest:cached
+    ports:
+      - "59908:3000"
+      - "59909:5000"
+    command: >
+      sh -c "npm start"
+    tty: true
