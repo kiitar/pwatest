@@ -13,5 +13,5 @@ services:
       - "59908:3000"
       - "59909:5000"
     command: >
-      sh -c "npm start"
+      sh -c "npm run build && npm i -g serve && serve -s build"
     tty: true
