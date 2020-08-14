@@ -10,7 +10,7 @@ services:
     volumes:
       - ./app/:/usr/src/app/pwatest:cached
     networks:
-      pwatest:
+      pwa:
         ipv4_address: 10.14.1.1
     ports:
       - "59908:3000"
@@ -20,7 +20,7 @@ services:
     tty: true
 
 networks:
-  pwatest:
+  pwa:
     driver: bridge
     ipam:
       config:
