@@ -18,6 +18,7 @@ services:
     command: >
       sh -c "npm run build && npm i -g serve && serve -s build"
     tty: true
+
 networks:
   pwatest:
     driver: bridge
