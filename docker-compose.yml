@@ -1,4 +1,4 @@
-version: "3"
+version: "2"
 services:
   pwatest:
     image: node:12-alpine
@@ -8,16 +8,16 @@ services:
       TZ: "Asia/Bangkok"
       REACT_APP_API: "test"
     volumes:
-      - ./app/:/usr/src/app/pwatest:cached
+      - ./app/:/usr/src/app/pwatest
     networks:
       pwa:
-        ipv4_address: 10.14.1.1
-    ports:
-      - "59908:3000"
-      - "59909:5000"
+        ipv4_address: 10.14.0.3
     command: >
-      sh -c "npm run build && npm i -g serve && serve -s build"
-    tty: true
+      sh -c "apk upgrade --update &&
+      apk add bash tzdata curl wget ca-certificates &&
+      ln -sf /usr/share/zoneinfo/$${TZ} /etc/localtime &&
+      echo $${TZ} > /etc/timezone &&
+      rm -rf /var/cache/apk/* && npm run build && npm i -g serve && serve -s build"
 
 networks:
   pwa:
